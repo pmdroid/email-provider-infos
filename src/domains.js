@@ -49,7 +49,7 @@ module.exports = [
     },
   },
   {
-    test: /gmail\.[^.]{2,}/i,
+    test: /(gmail\.[^.]{2,}|googlemail\.[^.]{2,})/i,
     inbox: {
       name: 'GMail',
       url: 'https://mail.google.com/',
@@ -74,6 +74,27 @@ module.exports = [
     inbox: {
       name: '1&1',
       url: 'https://account.1und1.de/',
+    },
+  },
+  {
+    test: /arcor\.[^.]{2,}/i,
+    inbox: {
+      name: 'Arcor',
+      url: 'https://www.arcor.de',
+    },
+  },
+  {
+    test: /(icloud\.[^.]{2,}|me\.[^.]{2,})/i,
+    inbox: {
+      name: 'iCloud',
+      url: 'https://www.icloud.com/',
+    },
+  },
+  {
+    test: /mail\.[^.]{2,}/i,
+    inbox: {
+      name: 'MAIL.de',
+      url: 'https://mail.de',
     },
   },
 ];
