@@ -1,6 +1,6 @@
 {
   "name": "email-provider-infos",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "find provider domains based on the users email addresses",
   "main": "src/index.js",
   "scripts": {
