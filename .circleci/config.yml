@@ -1,0 +1,35 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/email-provider-infos
+    docker:
+      - image: node:7
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: 'install dependencies'
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - .node_modules
+      - run:
+          name: 'check code style'
+          command: 'npm run test:eslint'
+      - run:
+          name: 'run tests'
+          command: 'npm run test:reporter'
+      - run:
+          name: 'run coverage'
+          command: 'npm run test:cover'
+      - run:
+          name: 'run report code coverage'
+          command: 'bash <(curl -s https://codecov.io/bash)'
+      - store_artifacts:
+            path: test-results.xml
+            prefix: tests
+      - store_test_results:
+          path: test-results.xml
